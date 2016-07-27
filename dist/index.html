@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script src="ticketmaster-client-0.5.0.js"></script>
+    <script>
+        (function ($) {
+            console.groupCollapsed('Events');
+            $('XiOrN2UC9yjuR4XF87sdMbRpaVNsP6W2').discovery.v2.event.all()
+            .then(function(events) {
+                console.log(events);
+                $('XiOrN2UC9yjuR4XF87sdMbRpaVNsP6W2')
+                        .discovery.v2.event.find(events.items[2].id)
+                        .then(function (events) {
+                            console.log(events);
+                            console.groupEnd()
+                        }).catch(function (err) {
+                            console.error(err)
+                        });
+                return $('XiOrN2UC9yjuR4XF87sdMbRpaVNsP6W2');
+            }).then(function ($) {
+                console.groupCollapsed('classifications');
+                $.discovery.v2.classification.all()
+            }).then(function(events) {
+                console.log(events);
+                $('XiOrN2UC9yjuR4XF87sdMbRpaVNsP6W2')
+                        .discovery.v2.classification.find(events.items[2].id)
+                        .then(function (events) {
+                            console.log(events);
+                            console.groupEnd()
+                        }).catch(function (err) {
+                            console.error(err)
+                        });
+            }).catch(function (err) {
+                console.error(err);
+            });
+        }(TMAPI))
+    </script>
+</body>
+</html>
